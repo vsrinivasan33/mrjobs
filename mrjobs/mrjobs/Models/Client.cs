@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MrJobs.Models
+namespace mrjobs.Models
 {
 	public class Client
 	{
@@ -16,54 +16,16 @@ namespace MrJobs.Models
 		public string ContactNumber { get; set; }
 
 		public string Email { get; set; }
-	}
 
+		public string AddressLine1 { get { return BillingAddress != null ? BillingAddress.AddressLine1 : String.Empty; } }
 
-	public class Job
-	{
-		[Newtonsoft.Json.JsonProperty("Id")]
-		public string Id { get; set; }
-
-		public string ClientId { get; set; }
-
-		public string ContactPerson { get; set; }
-
-		public string ContactNumber { get; set; }
-
-		public Address SiteAddress { get; set; }
-
-		public DateTime StartDate { get; set; }
-
-		public string Notes { get; set; }
-
-		public JobStatus Status { get; set; }
-
-		public bool SameAsBillingAddress { get; set; }
-
-	}
-
-
-	public class Address
-	{
-		[Newtonsoft.Json.JsonProperty("Id")]
-		public string Id { get; set; }
-		
-		public string AddressLine1 { get; set; }
-
-		public string AddressLine2 { get; set; }
-
-		public string Suburb { get; set; }
-
-		public string State { get; set; }
-
-		public string Country { get; set; }
-	}
-
-	public enum JobStatus 
-	{ 
-		Open = 0,
-		Pending = 1,
-		Overdue = 2,
-		Complete = 3
+		public string AddressLine2
+		{
+			get
+			{
+				return BillingAddress != null ? String.Format("{0} {1} {2}", BillingAddress.Suburb, BillingAddress.State, BillingAddress.PostCode)
+													  : String.Empty;
+			}
+		}
 	}
 }

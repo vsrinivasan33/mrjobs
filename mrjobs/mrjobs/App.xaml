@@ -1,6 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MrJobs.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="mrjobs.App">
 	<Application.Resources>
-		<!-- Application resource dictionary -->
+		<ResourceDictionary>
+			<!-- Application resource dictionary -->
+			<Color x:Key="AppTextColor">#556675</Color>
+			<Color x:Key="AppHeaderColor">#315885</Color>
+			<Color x:Key="AppDisabledTextColor">#979797</Color>
+			<Color x:Key="AppButtonColor">#00A483</Color>
+			<Color x:Key="AppNavBarColor">#5392DC</Color>
+			<Color x:Key="AppFrameColor">#D8D8D8</Color>
+			<!-- Button Styles -->
+			<Style x:Key="Button_Default" TargetType="Button">
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="FontSize" Value="17" />
+				<Setter Property="WidthRequest" Value="300" />
+				<Setter Property="BorderRadius" Value="20" />
+				<Setter Property="HeightRequest" Value="40" />
+				<Setter Property="BackgroundColor" Value="{StaticResource AppButtonColor}" />
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="FontAttributes" Value="Bold" />
+			</Style>
+			<!-- Label Styles -->
+			<Style x:Key="Label_Default" TargetType="Label">
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+				<Setter Property="VerticalOptions" Value="FillAndExpand" />
+				<Setter Property="VerticalTextAlignment" Value="Center" />
+				<Setter Property="FontFamily" Value="HelveticaNeue-Medium" />
+				<Setter Property="TextColor" Value="{StaticResource AppTextColor}" />
+				<Setter Property="FontSize" Value="15" />
+			</Style>
+				<Style x:Key="Label_Header" TargetType="Label" BasedOn="{StaticResource Label_Default}">
+				<Setter Property="FontFamily" Value="HelveticaNeue-Bold" />
+				<Setter Property="TextColor" Value="{StaticResource AppHeaderColor}" />
+				<Setter Property="HorizontalTextAlignment" Value="Start" />
+				<!--<Setter Property="FontAttributes" Value="Bold" />-->
+				<Setter Property="FontSize" Value="17" />
+			</Style>
+			<!-- BoxView Styles -->
+			<Style x:Key="BoxView_Dividor" TargetType="BoxView">
+				<Setter Property="Color" Value="{StaticResource AppDisabledTextColor}" />
+				<Setter Property="HeightRequest" Value="0.5" />
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="HorizontalOptions" Value="FillAndExpand" />
+			</Style>
+			<Style x:Key="BoxView_DividorGreen" TargetType="BoxView"  BasedOn="{StaticResource BoxView_Dividor}">
+				<Setter Property="Color" Value="#00C9C9"/>
+				<Setter Property="HeightRequest" Value="5" />
+			</Style>
+			<Style x:Key="BoxView_DividorBlue" TargetType="BoxView" BasedOn="{StaticResource BoxView_Dividor}">
+				<Setter Property="Color" Value="#2C6ABF" />
+			</Style>
+		</ResourceDictionary>
 	</Application.Resources>
 </Application>

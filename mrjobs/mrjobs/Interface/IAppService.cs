@@ -1,17 +1,17 @@
-﻿using MrJobs.Models;
+﻿using mrjobs.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MrJobs.Interface
+namespace mrjobs.Interface
 {
 	public interface IAppService
 	{
 		Task<List<Client>> GetClientsList();
 
-		Task<List<Job>> GetClientJobs(long clientId);
+		Task<List<Job>> GetClientJobs(string clientId);
 
 		Task<Job> SaveJobDetails(Job saveJob);
 
-		Task<bool> DeleteJob(long jobId);
+		Task<bool> DeleteJob(string jobId);
 	}
 }

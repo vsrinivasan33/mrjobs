@@ -1,5 +1,46 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MrJobs.Pages.ClientsPage">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="mrjobs.Pages.ClientsPage" Title="CLIENTS">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Name="buttonAdd" StyleId="buttonAdd" Order="Primary" Priority="0" Icon="add.png" Text="Add" Command="{Binding AddClientCommand}" />
+	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
+		<ListView x:Name="listViewClients" ItemsSource="{Binding Clients}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding LoadClientsCommand}" SeparatorVisibility="None" HasUnevenRows="true">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Grid Padding="20,20,20,0" ColumnSpacing="20">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="25" />
+								<RowDefinition Height="1" />
+								<RowDefinition Height="25" />
+								<RowDefinition Height="20" />
+								<RowDefinition Height="25" />
+								<RowDefinition Height="5" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="*" />
+							</Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Name}" Style="{StaticResource Label_Header}" />
+							<BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BoxView_Dividor}" />
+							<StackLayout Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+								<Image Source="pin.png" HeightRequest="15" />
+								<Label Text="{Binding AddressLine1}" Style="{StaticResource Label_Default}" />
+							</StackLayout>
+							<StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+								<Image Source="phone.png" WidthRequest="15" HeightRequest="15" />
+								<Label Text="{Binding ContactNumber}" Style="{StaticResource Label_Default}" />
+							</StackLayout>
+							<Label Grid.Row="3" Grid.Column="0" Margin="20,0,0,0" Text="{Binding AddressLine2}" Style="{StaticResource Label_Default}" />
+							<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+								<Image Source="email.png" WidthRequest="14" />
+								<Label Text="Email" Style="{StaticResource Label_Default}" />
+							</StackLayout>
+							<BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="-20,0" Style="{StaticResource BoxView_DividorGreen}" />
+						</Grid>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
 	</ContentPage.Content>
 </ContentPage>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
-using MrJobs;
+using mrjobs;
 using UIKit;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
                

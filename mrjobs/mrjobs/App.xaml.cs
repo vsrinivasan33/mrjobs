@@ -1,7 +1,10 @@
-﻿using MrJobs.Pages;
+using Microsoft.Practices.Unity;
+using mrjobs.Interface;
+using mrjobs.Services;
+using mrjobs.Pages;
 using Xamarin.Forms;
 
-namespace MrJobs
+namespace mrjobs
 {
 	public partial class App : Application
 	{
@@ -14,9 +17,14 @@ namespace MrJobs
 			MainPage = navPage;
 		}
 
+		public static UnityContainer Container { get; set; }
+
 		protected override void OnStart()
 		{
 			// Handle when your app starts
+			Container = new UnityContainer();
+
+			Container.RegisterType<IAppService, MockAppService>();
 		}
 
 		protected override void OnSleep()

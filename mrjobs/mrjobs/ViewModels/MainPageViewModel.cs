@@ -1,10 +1,14 @@
 ﻿using System;
-namespace MrJobs.ViewModels
+using MvvmHelpers;
+using Xamarin.Forms;
+
+namespace mrjobs.ViewModels
 {
-	public class MainPageViewModel
+	public class MainPageViewModel : BaseViewModel
 	{
 		public MainPageViewModel()
 		{
+			
 		}
 	}
 }

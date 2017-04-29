@@ -1,7 +1,7 @@
-﻿using MrJobs.ViewModels;
+using mrjobs.ViewModels;
 using Xamarin.Forms;
 
-namespace MrJobs.Pages
+namespace mrjobs.Pages
 {
 	public partial class MainPage : ContentPage
 	{
@@ -9,7 +9,9 @@ namespace MrJobs.Pages
 		{
 			InitializeComponent();
 			NavigationPage.SetHasNavigationBar(this, true);
+			NavigationPage.SetBackButtonTitle(this, string.Empty);
 			BindingContext = new MainPageViewModel();
+			buttonClients.Clicked += (sender, e) => Navigation.PushAsync(new ClientsPage());
 		}
 	}
 }

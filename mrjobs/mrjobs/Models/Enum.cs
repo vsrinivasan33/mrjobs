@@ -1,11 +1,10 @@
-using System;
-namespace MrJobs.Models
+namespace mrjobs.Models
 {
 	public enum JobStatus 
 	{ 
 		Open = 0,
 		Pending = 1,
 		Overdue = 2,
-		Complete = 3
+		Paid = 3
 	}
 }

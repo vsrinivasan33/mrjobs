@@ -65,6 +65,9 @@
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Enum.cs" />
+    <Compile Include="Services\AzureAppService.cs" />
+    <Compile Include="Services\MockAppService.cs" />
+    <Compile Include="Controls\RoundedBoxView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
@@ -72,6 +75,7 @@
     <Folder Include="Models\" />
     <Folder Include="Services\" />
     <Folder Include="Interface\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">
@@ -109,6 +113,21 @@
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile.SQLiteStore">
       <HintPath>..\packages\Microsoft.Azure.Mobile.Client.SQLiteStore.3.1.0\lib\portable-win+net45+wp8+wpa81+monotouch10+monoandroid10+xamarinios10\Microsoft.WindowsAzure.Mobile.SQLiteStore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmHelpers">
+      <HintPath>..\packages\Refractored.MvvmHelpers.1.2.2\lib\portable-net45+wp80+win8+wpa81\MvvmHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.Platform">
+      <HintPath>..\packages\Rg.Plugins.Popup.1.0.4\lib\portable-win+net45+wp8+win8+wpa81\Rg.Plugins.Popup.Platform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

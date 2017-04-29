@@ -1,13 +1,13 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrJobs", "mrjobs\mrjobs.csproj", "{ACE620D2-E9AE-4870-A3DA-B579AE7F7B75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mrjobs", "mrjobs\mrjobs.csproj", "{ACE620D2-E9AE-4870-A3DA-B579AE7F7B75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrJobs.iOS", "iOS\mrjobs.iOS.csproj", "{D2CC5FA8-BFE9-4138-9FA5-4CE260F17DC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mrjobs.iOS", "iOS\mrjobs.iOS.csproj", "{D2CC5FA8-BFE9-4138-9FA5-4CE260F17DC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrJobs.Droid", "Droid\mrjobs.Droid.csproj", "{C6DBD2A6-E33B-4297-AEBC-7E7BECB9800E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mrjobs.Droid", "Droid\mrjobs.Droid.csproj", "{C6DBD2A6-E33B-4297-AEBC-7E7BECB9800E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MrJobs.UITests", "UITests\mrjobs.UITests.csproj", "{53C01D01-4A27-4836-A2AA-19EA0F4C27E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mrjobs.UITests", "UITests\mrjobs.UITests.csproj", "{53C01D01-4A27-4836-A2AA-19EA0F4C27E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

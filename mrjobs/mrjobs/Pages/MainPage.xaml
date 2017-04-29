@@ -1,5 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MrJobs.Pages" x:Class="MrJobs.Pages.MainPage" Title="Mr.Jobs">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:mrjobs.Pages" x:Class="mrjobs.Pages.MainPage" Title="MR.JOBS">
 	<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="275" />
@@ -21,11 +22,11 @@
 
 		<BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Color="#00C9C9" />
 		
-		<Button Image="clients.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
+		<Button x:Name="buttonClients" Image="clients.png" Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
 		<BoxView Grid.Row="2" Grid.Column="1" WidthRequest="1" VerticalOptions="FillAndExpand" Color="Gray" />
-		<Button Image="invoice.png" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" />
+		<Button x:Name="buttonInvoices" Image="invoice.png" Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" />
 		<BoxView Grid.Row="2" Grid.Column="3" WidthRequest="1" VerticalOptions="FillAndExpand" Color="Gray" />
-		<Button Image="settings.png" Grid.Row="2" Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center" />
+		<Button x:Name="buttonSettings" Image="settings.png" Grid.Row="2" Grid.Column="4" HorizontalOptions="Center" VerticalOptions="Center" />
 
 		<BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Color="#00C9C9" />
 		

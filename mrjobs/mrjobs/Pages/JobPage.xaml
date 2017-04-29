@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="mrjobs.Pages.JobPage" Title="{Binding JobTitle}">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="buttonClose" StyleId="buttonClose" Order="Primary" Priority="0" Icon="close.png" Text="Close" Command="{Binding GoBackCommand}" />
+		<ToolbarItem x:Name="buttonClose" StyleId="buttonClose" Order="Primary" Priority="0" Icon="close.png" Text="CLOSE" Clicked="ButtonClose_Clicked" />
+		<ToolbarItem x:Name="buttonSave" StyleId="buttonSave" Order="Primary" Priority="1" Text="{Binding SaveButtonText}" Clicked="ButtonSave_Clicked" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">
@@ -29,8 +30,8 @@
 					<Label Text="{Binding Job.Status}" Style="{StaticResource Label_Default}" />
 				</StackLayout>
 				<BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BoxView_Dividor}" />
-				<Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Primary Contact" Style="{StaticResource Label_Header}" FontSize="15" VerticalOptions="Center"/>
-				<StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Spacing="0">
+				<Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Primary Contact" Style="{StaticResource Label_Header}" FontSize="15" VerticalOptions="Center" />
+				<StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Spacing="0" Padding="20,0">
 					<Label Text="{Binding Job.ContactName}" Style="{StaticResource Label_Default}" />
 					<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="0,-1,0,0" />
 				</StackLayout>
@@ -51,33 +52,40 @@
 					<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="20,-16,0,0" />
 					<StackLayout Padding="0" Spacing="0">
 						<Label Margin="20,0,0,0" Style="{StaticResource Label_Default}" Text="{Binding Client.AddressLine2}" HeightRequest="20" />
-						<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="20,-1,0,0" />
+						<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="20,0,0,0" />
 					</StackLayout>
 					<BoxView Margin="-20,0" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />
 				</StackLayout>
 				<StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,15" Spacing="15">
 					<StackLayout Orientation="Horizontal" Padding="0" Spacing="0" HeightRequest="25">
 						<Label Style="{StaticResource Label_Header}" FontSize="15" Text="Job/Site Address" />
-						<Label Style="{StaticResource Label_Default}" FontAttributes="Italic" Text="Same as Billing" HorizontalOptions="End" HeightRequest="20" />
+						<Label Style="{StaticResource Label_Italic}" Text="Same as Billing" HorizontalOptions="End" HeightRequest="20" />
 						<Switch Margin="5,0,0,0" IsToggled="true" HorizontalOptions="End" />
 					</StackLayout>
 					<StackLayout Orientation="Horizontal" Padding="0" Spacing="10">
 						<Image Source="pin.png" HeightRequest="15" VerticalOptions="Center" />
-						<Label Style="{StaticResource Label_Default}" Text="{Binding Job.AddressLine1}" HeightRequest="20" />
+						<Label Style="{StaticResource Label_Default}" Text="Binding Job.AddressLine1" HeightRequest="20" />
 					</StackLayout>
 					<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="20,-16,0,0" />
 					<StackLayout Padding="0" Spacing="0">
-						<Label Margin="20,0,0,0" Style="{StaticResource Label_Default}" Text="{Binding Job.AddressLine2}" HeightRequest="20" />
+						<Label Margin="20,0,0,0" Style="{StaticResource Label_Default}" Text="Binding Job.AddressLine2" HeightRequest="20" />
 						<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="20,-1,0,0" />
 					</StackLayout>
-					<BoxView Margin="-20,0" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />
+					<BoxView Margin="-20,0" Style="{StaticResource BoxView_DividorBlue}" />
 				</StackLayout>
 				<Label Grid.Row="8" Grid.Column="0" Style="{StaticResource Label_Header}" FontSize="15" Text="Job Start Date" />
-				<DatePicker Grid.Row="8" Grid.Column="1" Date="{Binding Job.StartDate}" HeightRequest="25" VerticalOptions="Center"/>
+				<StackLayout Grid.Row="8" Grid.Column="1" Padding="0" Spacing="0" HorizontalOptions="Start" VerticalOptions="Center">
+					<Button x:Name="buttonStartDate" TextColor="{StaticResource AppTextColor}" HeightRequest="20" Text="{Binding Job.StartDate, StringFormat='{0:dd-MMM-yyyy}'}" />
+					<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="0,-1,0,0" />
+				</StackLayout>
+				<DatePicker x:Name="datePickerStartDate" Grid.Row="8" Grid.Column="1" Date="{Binding Job.StartDate}" HeightRequest="20" VerticalOptions="Center" IsVisible="false" />
 				<BoxView Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="-20,0" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />
 				<Label Grid.Row="9" Grid.Column="0" Style="{StaticResource Label_Header}" FontSize="15" Text="Notes" />
 				<StackLayout Grid.Row="9" Grid.Column="1" Orientation="Horizontal" Padding="0" Spacing="10">
-					<Label Style="{StaticResource Label_Default}" Text="{Binding Job.Notes}" VerticalOptions="Center" HeightRequest="20" FontAttributes="Italic" LineBreakMode="CharacterWrap" />
+					<StackLayout Padding="0" Spacing="0" VerticalOptions="Center">
+						<Label Style="{StaticResource Label_Default}" Text="{Binding Job.Notes}" HeightRequest="20" FontAttributes="Italic" LineBreakMode="CharacterWrap" />
+						<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="0,-1,0,0" />
+					</StackLayout>
 					<Image Source="chevron.png" HorizontalOptions="End" VerticalOptions="Center" />
 				</StackLayout>
 				<BoxView Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="-20,0" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />

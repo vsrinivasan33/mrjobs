@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:mrjobs.Controls;assembly=mrJobs" x:Class="mrjobs.Pages.ClientJobsPage" Title="CLIENT JOBS">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="buttonAdd" StyleId="buttonAdd" Order="Primary" Priority="0" Icon="add.png" Text="Add" Command="{Binding AddClientJobCommand}" />
+		<ToolbarItem Name="buttonAdd" StyleId="buttonAdd" Order="Primary" Priority="1" Icon="add.png" Text="Add" Command="{Binding AddClientJobCommand}" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">

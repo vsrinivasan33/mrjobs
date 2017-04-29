@@ -68,9 +68,27 @@ namespace mrjobs.Services
 			return await Task.FromResult(_clientList);
 		}
 
-		public Task<Job> SaveJobDetails(Job saveJob)
+		public async Task<Job> SaveJobDetails(Job saveJob)
 		{
-			throw new NotImplementedException();
+			var savedJob = await Task.Run(() =>
+			{
+				if (string.IsNullOrEmpty(saveJob.Id))
+				{
+					saveJob.Id = "J" + _clientJobsList.Count + 1;
+					_clientJobsList.Add(saveJob);
+					return saveJob;
+				}
+				var selectedJob = _clientJobsList.FirstOrDefault(j => j.Id == saveJob.Id);
+				if (selectedJob != null)
+				{
+					_clientJobsList.Remove(selectedJob);
+					_clientJobsList.Add(saveJob);
+					return selectedJob;
+				}
+				return null;
+			});
+
+			return savedJob;
 		}
 	}
 }

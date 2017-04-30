@@ -6,6 +6,10 @@ namespace mrjobs.Interface
 {
 	public interface IAppService
 	{
+		Task Initialize();
+
+		Task<Client> AddClient(NewClient client);
+
 		Task<List<Client>> GetClientsList();
 
 		Task<List<Job>> GetClientJobs(string clientId);

@@ -4,11 +4,12 @@
 		<ToolbarItem Name="buttonAdd" StyleId="buttonAdd" Order="Primary" Priority="1" Icon="add.png" Text="Add" Clicked="ButtonAdd_Clicked" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
-		<ListView x:Name="listViewClients" ItemsSource="{Binding Clients}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding LoadClientsCommand}" SeparatorVisibility="None" HasUnevenRows="true">
+		<ListView x:Name="listViewClients" ItemsSource="{Binding Clients}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+			IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" RefreshCommand="{Binding LoadClientsCommand}" SeparatorVisibility="None" HasUnevenRows="true">
 			<ListView.ItemTemplate>
 				<DataTemplate>
 					<ViewCell>
-						<Grid Padding="20,20,20,0" ColumnSpacing="20">
+						<Grid Padding="20,20,20,0" ColumnSpacing="10">
 							<Grid.RowDefinitions>
 								<RowDefinition Height="25" />
 								<RowDefinition Height="1" />
@@ -18,8 +19,8 @@
 								<RowDefinition Height="5" />
 							</Grid.RowDefinitions>
 							<Grid.ColumnDefinitions>
-								<ColumnDefinition Width="*" />
-								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="0.6*" />
+								<ColumnDefinition Width="0.4*" />
 							</Grid.ColumnDefinitions>
 							<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Name}" Style="{StaticResource Label_Header}" />
 							<BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BoxView_Dividor}" />
@@ -33,7 +34,7 @@
 							</StackLayout>
 							<Label Grid.Row="3" Grid.Column="0" Margin="20,0,0,0" Text="{Binding AddressLine2}" Style="{StaticResource Label_Default}" />
 							<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-								<Image Source="email.png" WidthRequest="14" />
+								<Image Source="email.png" />
 								<Label Text="Email" Style="{StaticResource Label_Default}" />
 							</StackLayout>
 							<BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="-20,0" Style="{StaticResource BoxView_DividorGreen}" />

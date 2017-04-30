@@ -13,6 +13,11 @@ namespace mrjobs.Services
 		List<Job> _clientJobsList = new List<Job>();
 		public MockAppService()
 		{
+
+		}
+
+		public async Task Initialize()
+		{
 			var newClient = new Client { Id = "C1", Name = "MYER Groups Pty Ltd.", ContactNumber = "(03)9400 1234", Email = "hello@myer.com.au" };
 			newClient.BillingAddress = new Address { Id = "A1", AddressLine1 = "200 Lonsdale Street", Suburb = "Melbourne", State = "VIC", PostCode = "3000" };
 			_clientList.Add(newClient);
@@ -66,6 +71,17 @@ namespace mrjobs.Services
 		public async Task<List<Client>> GetClientsList()
 		{
 			return await Task.FromResult(_clientList);
+		}
+
+		public async Task<Client> AddClient(NewClient addClient)
+		{
+			return await Task.Run(() =>
+			{
+				var newClientAddress = new Address { Id = "A" + _clientList.Count + 1, AddressLine1 = addClient.AddressLine1, AddressLine2 = addClient.AddressLine2, Suburb = addClient.Suburb, State = addClient.State, PostCode = addClient.PostCode, Country = addClient.Country };
+				var newClient = new Client { Id = "C" + _clientList.Count + 1, Name = addClient.Name, ContactNumber = addClient.ContactNumber, Email = addClient.Email, BillingAddress = newClientAddress };
+				_clientList.Add(newClient);
+				return newClient;
+			});
 		}
 
 		public async Task<Job> SaveJobDetails(Job saveJob)

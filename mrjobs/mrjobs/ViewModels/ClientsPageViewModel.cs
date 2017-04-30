@@ -26,10 +26,26 @@ namespace mrjobs.ViewModels
 		{
 			LoadClientsCommand = new Command(async () =>
 			{
-				var appService = App.Container.Resolve<IAppService>();
-				if (appService != null)
+				if (IsBusy)
+					return;
+				try
 				{
-					Clients = new ObservableRangeCollection<Client>(await appService.GetClientsList());
+					IsBusy = true;
+					var appService = App.Container.Resolve<IAppService>();
+					if (appService != null)
+					{
+						await appService.Initialize();
+						var clientList = await appService.GetClientsList();
+						Clients = new ObservableRangeCollection<Client>(clientList);
+					}
+				}
+				catch (System.Exception ex)
+				{
+					System.Diagnostics.Debug.WriteLine(ex);
+				}
+				finally
+				{
+					IsBusy = false;
 				}
 			});
 			//Fire the first call on initial load

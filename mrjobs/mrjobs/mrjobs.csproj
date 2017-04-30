@@ -80,6 +80,8 @@
     <Compile Include="Pages\AddClientPage.xaml.cs">
       <DependentUpon>AddClientPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddClientPageViewModel.cs" />
+    <Compile Include="Config\AppConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
@@ -88,6 +90,7 @@
     <Folder Include="Services\" />
     <Folder Include="Interface\" />
     <Folder Include="Controls\" />
+    <Folder Include="Config\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

@@ -3,7 +3,7 @@ namespace mrjobs.Models
 {
 	public class Job
 	{
-		[Newtonsoft.Json.JsonProperty("Id")]
+		[Newtonsoft.Json.JsonProperty("id")]
 		public string Id { get; set; }
 
 		public string ClientId { get; set; }

@@ -23,8 +23,11 @@ namespace mrjobs
 		{
 			// Handle when your app starts
 			Container = new UnityContainer();
-
-			Container.RegisterType<IAppService, MockAppService>();
+#if RELEASE
+			Container.RegisterType<IAppService, MockAppService>(new ContainerControlledLifetimeManager());
+#else
+			Container.RegisterType<IAppService, AzureAppService>(new ContainerControlledLifetimeManager());
+#endif
 		}
 
 		protected override void OnSleep()

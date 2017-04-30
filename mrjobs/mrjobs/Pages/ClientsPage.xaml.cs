@@ -14,12 +14,23 @@ namespace mrjobs.Pages
 			InitializeComponent();
 			NavigationPage.SetBackButtonTitle(this, String.Empty);
 			BindingContext = new ClientsPageViewModel();
-			listViewClients.ItemSelected += (sender, e) => Navigation.PushAsync(new ClientJobsPage(e.SelectedItem as Client));
+			listViewClients.ItemSelected += (sender, e) =>
+			{
+				if(e.SelectedItem != null)
+					Navigation.PushAsync(new ClientJobsPage(e.SelectedItem as Client));
+				//Remove the highlighted selection once clicked
+				((ListView)sender).SelectedItem = null;
+			};
 		}
 
 		void ButtonAdd_Clicked(object sender, System.EventArgs e)
 		{
 			PopupNavigation.PushAsync(new AddClientPage());
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
 		}
 	}
 }

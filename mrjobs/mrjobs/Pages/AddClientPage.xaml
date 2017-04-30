@@ -13,7 +13,7 @@
 			<Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" HasShadow="true" BackgroundColor="White" Margin="-20,-20" />
 			<StackLayout Grid.Row="0" Grid.Column="0" Spacing="10" VerticalOptions="Center">
 				<Label Grid.Row="0" Grid.Column="0" Text="Client Name" Style="{StaticResource Label_Header}" HeightRequest="25" />
-				<Entry Placeholder="Enter Client Name" HeightRequest="25" />
+				<Entry Text="{Binding Client.Name}" Placeholder="Enter Client Name" HeightRequest="25" />
 			</StackLayout>
 			<BoxView Grid.Row="1" Grid.Column="0" Style="{StaticResource BoxView_Dividor}" />
 			<StackLayout Grid.Row="2" Grid.Column="0" Spacing="15" Padding="20,0,0,0">
@@ -41,7 +41,7 @@
 			<!--<BoxView Grid.Row="5" Grid.Column="0"  Margin="-20,0" Style="{StaticResource BoxView_DividorGreen}" />-->
 			<StackLayout Grid.Row="5" Grid.Column="0" Padding="0,10" Spacing="0">
 				<BoxView Style="{StaticResource BoxView_DividorBlue}" Margin="-20,0" />
-				<Button Style="{StaticResource Button_Default}" Text="ADD CLIENT" HorizontalOptions="FillAndExpand" />
+				<Button x:Name="buttonAddClient" Style="{StaticResource Button_Default}" Text="ADD CLIENT" HorizontalOptions="FillAndExpand" />
 			</StackLayout>
 		</Grid>
 	</ScrollView>

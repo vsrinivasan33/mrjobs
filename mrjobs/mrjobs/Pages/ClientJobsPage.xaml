@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:mrjobs.Controls;assembly=mrJobs" x:Class="mrjobs.Pages.ClientJobsPage" Title="CLIENT JOBS">
+<ContentPage x:Name="clientJobsPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:mrjobs.Controls;assembly=mrJobs" x:Class="mrjobs.Pages.ClientJobsPage" Title="CLIENT JOBS">
 	<ContentPage.ToolbarItems>
 		<ToolbarItem Name="buttonAdd" StyleId="buttonAdd" Order="Primary" Priority="1" Icon="add.png" Text="Add" Command="{Binding AddClientJobCommand}" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">
-			<Grid Padding="20,20,20,0" ColumnSpacing="20">
+			<Grid Padding="20,20,20,0" ColumnSpacing="10">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="25" />
 					<RowDefinition Height="1" />
@@ -15,8 +15,8 @@
 					<RowDefinition Height="5" />
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="0.6*" />
+					<ColumnDefinition Width="0.4*" />
 				</Grid.ColumnDefinitions>
 				<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Client.Name}" Style="{StaticResource Label_Header}" />
 				<BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BoxView_Dividor}" />
@@ -35,43 +35,49 @@
 				</StackLayout>
 				<BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="-20,0" Style="{StaticResource BoxView_DividorGreen}" />
 			</Grid>
-			<ListView x:Name="listViewJobs" ItemsSource="{Binding ClientJobs}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsRefreshing="{Binding IsBusy}" RefreshCommand="{Binding LoadClientJobsCommand}" SeparatorVisibility="None" HasUnevenRows="true">
+			<ListView x:Name="listViewJobs" ItemsSource="{Binding ClientJobs}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+				IsPullToRefreshEnabled="true" IsRefreshing="{Binding IsBusy, Mode=OneWay}" RefreshCommand="{Binding LoadClientJobsCommand}" SeparatorVisibility="None" HasUnevenRows="true">
 				<ListView.Header>
 					<Grid Padding="20,5,20,0" ColumnSpacing="10">
-								<Grid.RowDefinitions>
-									<RowDefinition Height="45" />
-									<RowDefinition Height="1" />
-								</Grid.RowDefinitions>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="45" />
-									<ColumnDefinition Width="*" />
-								</Grid.ColumnDefinitions>
-								<controls:RoundedBoxView Grid.Row="0" Grid.Column="0" CornerRadius="22.5" Color="#556675"/>
-								<Label Grid.Row="0" Grid.Column="0" Style="{StaticResource Label_Header}" TextColor="White" FontSize="21" Text="5" HorizontalOptions="Center" VerticalOptions="Center"/>
-								<Label Grid.Row="0" Grid.Column="1" Style="{StaticResource Label_Header}" Text="JOBS FOUND" />
-								<BoxView Margin="-20,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />
-						</Grid>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="45" />
+							<RowDefinition Height="1" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="45" />
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<controls:RoundedBoxView Grid.Row="0" Grid.Column="0" CornerRadius="22.5" Color="#556675" />
+						<Label Grid.Row="0" Grid.Column="0" Style="{StaticResource Label_Header}" TextColor="White" FontSize="21" Text="{Binding Path=BindingContext.JobCount, Source={x:Reference clientJobsPage}}" HorizontalOptions="Center" VerticalOptions="Center" />
+						<Label Grid.Row="0" Grid.Column="1" Style="{StaticResource Label_Header}" Text="JOBS FOUND" />
+						<BoxView Margin="-20,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />
+					</Grid>
 				</ListView.Header>
 				<ListView.ItemTemplate>
 					<DataTemplate>
-						<ViewCell>
-							<Grid Padding="20,15,20,0" ColumnSpacing="10" RowSpacing="3">
-								<Grid.RowDefinitions>
-									<RowDefinition Height="25" />
-									<RowDefinition Height="20" />
-									<RowDefinition Height="16" />
-								</Grid.RowDefinitions>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="45" />
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="20" />
-								</Grid.ColumnDefinitions>
-								<Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding JobStatusImage}" />
-								<Label Grid.Row="0" Grid.Column="1" Style="{StaticResource Label_Header}" Text="{Binding Id, StringFormat='Job ID: {0}'}" />
-								<Image Grid.Row="0" Grid.Column="2" Source="chevron.png" HorizontalOptions="End" VerticalOptions="Center"/>
-								<Label Grid.Row="1" Grid.Column="1" Style="{StaticResource Label_Default}" Text="{Binding InvoicedDateString}" />
-								<BoxView Margin="-20,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />
-							</Grid>
+						<ViewCell BindingContextChanged="OnBindingContextChanged">
+							<ViewCell.ContextActions>
+								<MenuItem Clicked="DeleteJob_Clicked" Command="{Binding Path=BindingContext.DeleteJobCommand, Source={x:Reference clientJobsPage}}" CommandParameter="{Binding Id}" Text="Delete" IsDestructive="True"/>
+							</ViewCell.ContextActions>
+							<ViewCell.View>
+								<Grid Padding="20,15,20,0" ColumnSpacing="10" RowSpacing="3">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="25" />
+										<RowDefinition Height="20" />
+										<RowDefinition Height="16" />
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="45" />
+										<ColumnDefinition Width="*" />
+										<ColumnDefinition Width="20" />
+									</Grid.ColumnDefinitions>
+									<Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding JobStatusImage}" />
+									<Label Grid.Row="0" Grid.Column="1" Style="{StaticResource Label_Header}" Text="{Binding Id, StringFormat='Job ID: {0}'}" />
+									<Image Grid.Row="0" Grid.Column="2" Source="chevron.png" HorizontalOptions="End" VerticalOptions="Center" />
+									<Label Grid.Row="1" Grid.Column="1" Style="{StaticResource Label_Default}" Text="{Binding InvoicedDateString}" />
+									<BoxView Margin="-20,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />
+								</Grid>
+							</ViewCell.View>
 						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>

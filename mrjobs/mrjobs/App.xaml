@@ -66,6 +66,12 @@
 				<Setter Property="TextColor" Value="{StaticResource AppTextColor}" />
 				<Setter Property="FontSize" Value="15" />
 			</Style>
+			<Style TargetType="Button">
+				<Setter Property="BorderWidth" Value="0" />
+                <Setter Property="BorderColor" Value="Transparent" />
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<!--<Setter Property="Scale" Value="0.5" />-->
+			</Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

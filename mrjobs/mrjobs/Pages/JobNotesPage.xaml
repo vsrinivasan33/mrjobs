@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" x:Class="mrjobs.Pages.JobNotesPage" CloseWhenBackgroundIsClicked="true" Padding="20">
+	<ScrollView Padding="0">
+		<Grid Padding="20" RowSpacing="15" BackgroundColor="Transparent" VerticalOptions="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="150" />
+				<RowDefinition Height="70" />
+			</Grid.RowDefinitions>
+			<Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" HasShadow="true" BackgroundColor="White" Margin="-20,-20" />
+			<Button Image="closepopup.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Start" Margin="0,-30,-15,0" Clicked="ButtonClose_Clicked"/>
+			<StackLayout Grid.Row="0" Grid.Column="0" Spacing="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">
+				<Editor x:Name="editorJobNotes" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+			</StackLayout>
+			<StackLayout Grid.Row="1" Grid.Column="0" Padding="0,10" Spacing="20">
+				<BoxView Style="{StaticResource BoxView_DividorBlue}" Margin="-20,0" />
+				<Button x:Name="buttonAddClient" Style="{StaticResource Button_Default}" Text="CLOSE" HorizontalOptions="FillAndExpand" Clicked="ButtonClose_Clicked"/>
+			</StackLayout>
+		</Grid>
+	</ScrollView>
+</pages:PopupPage>

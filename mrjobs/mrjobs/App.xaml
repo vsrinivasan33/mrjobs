@@ -61,6 +61,11 @@
 				<Setter Property="TextColor" Value="{StaticResource AppTextColor}" />
 				<Setter Property="FontSize" Value="15" />
 			</Style>
+			<Style TargetType="Editor">
+				<Setter Property="FontFamily" Value="HelveticaNeue-Medium" />
+				<Setter Property="TextColor" Value="{StaticResource AppTextColor}" />
+				<Setter Property="FontSize" Value="15" />
+			</Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

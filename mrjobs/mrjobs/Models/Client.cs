@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 namespace mrjobs.Models
 {
 	public class Client
@@ -12,21 +12,26 @@ namespace mrjobs.Models
 		public string Name { get; set; }
 
 		[Newtonsoft.Json.JsonIgnore]
-		public Address BillingAddress { get; set; }
+		public ContactAddress BillingAddress { get; set; }
+		/// <summary>
+		/// Store the reference to Billing Address Obj
+		/// </summary>
+		/// <value>The billing address identifier.</value>
+		public string BillingAddressId { get; set; }
 
 		public string ContactNumber { get; set; }
 
 		public string Email { get; set; }
 
 		[Newtonsoft.Json.JsonIgnore]
-		public string AddressLine1 { get { return BillingAddress != null ? BillingAddress.AddressLine1 : String.Empty; } }
+		public string AddressLine1 { get { return BillingAddress != null ?  String.Format("{0} {1}", BillingAddress.AddressLine1, BillingAddress.AddressLine2) : "Not Available"; } }
 		[Newtonsoft.Json.JsonIgnore]
 		public string AddressLine2
 		{
 			get
 			{
 				return BillingAddress != null ? String.Format("{0} {1} {2}", BillingAddress.Suburb, BillingAddress.State, BillingAddress.PostCode)
-													  : String.Empty;
+													  : "Not Available";
 			}
 		}
 	}

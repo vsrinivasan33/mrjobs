@@ -34,7 +34,7 @@ namespace mrjobs.ViewModels
 					var appService = App.Container.Resolve<IAppService>();
 					if (appService != null)
 					{
-						await appService.Initialize();
+						//await appService.Initialize();
 						var clientList = await appService.GetClientsList();
 						Clients = new ObservableRangeCollection<Client>(clientList);
 					}

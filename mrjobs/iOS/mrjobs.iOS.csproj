@@ -207,9 +207,6 @@
     <BundleResource Include="Resources\invoice.png" />
     <BundleResource Include="Resources\invoice%402x.png" />
     <BundleResource Include="Resources\invoice%403x.png" />
-    <BundleResource Include="Resources\clients.png" />
-    <BundleResource Include="Resources\clients%402x.png" />
-    <BundleResource Include="Resources\clients%403x.png" />
     <BundleResource Include="Resources\close.png" />
     <BundleResource Include="Resources\close%402x.png" />
     <BundleResource Include="Resources\close%403x.png" />
@@ -231,6 +228,12 @@
     <BundleResource Include="Resources\tick.png" />
     <BundleResource Include="Resources\tick%402x.png" />
     <BundleResource Include="Resources\tick%403x.png" />
+    <BundleResource Include="Resources\clients.png" />
+    <BundleResource Include="Resources\clients%402x.png" />
+    <BundleResource Include="Resources\clients%403x.png" />
+    <BundleResource Include="Resources\closepopup.png" />
+    <BundleResource Include="Resources\closepopup%402x.png" />
+    <BundleResource Include="Resources\closepopup%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

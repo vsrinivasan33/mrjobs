@@ -12,7 +12,10 @@ namespace mrjobs.Models
 
 		public string ContactNumber { get; set; }
 
-		public Address SiteAddress { get; set; }
+		public string SiteAddressId { get; set; }
+
+		[Newtonsoft.Json.JsonIgnore]
+		public ContactAddress SiteAddress { get; set; }
 
 		public DateTime StartDate { get; set; }
 
@@ -22,14 +25,25 @@ namespace mrjobs.Models
 
 		public JobStatus Status { get; set; }
 
+		public bool SameAsBillingAddress { get; set; } = true;
+
 		[Newtonsoft.Json.JsonIgnore]
-		public bool SameAsBillingAddress { get; set; }
+		public string AddressLine1 { get { return SiteAddress != null ? String.Format("{0} {1}", SiteAddress.AddressLine1, SiteAddress.AddressLine2) : "Not Available"; } }
+		[Newtonsoft.Json.JsonIgnore]
+		public string AddressLine2
+		{
+			get
+			{
+				return SiteAddress != null ? String.Format("{0} {1} {2}", SiteAddress.Suburb, SiteAddress.State, SiteAddress.PostCode)
+													  : "Not Available";
+			}
+		}
 
 		[Newtonsoft.Json.JsonIgnore]
 		public string StartDateString { get { return StartDate == DateTime.MinValue ? "Not closed yet" : StartDate.ToString("dd-MMM-yyyy"); } }
 
 		[Newtonsoft.Json.JsonIgnore]
-		public string InvoicedDateString { get { return InvoicedDate == DateTime.MinValue ? "Not closed yet" : InvoicedDate.ToString("dd-MMM-yyyy"); } }
+		public string InvoicedDateString { get { return InvoicedDate == DateTime.MinValue ? "Yet to Invoice" : InvoicedDate.ToString("dd-MMM-yyyy"); } }
 
 		[Newtonsoft.Json.JsonIgnore]
 		public string JobStatusImage
@@ -38,6 +52,12 @@ namespace mrjobs.Models
 			{
 				return string.Format("{0}.png", Status.ToString().ToLower());
 			}
+		}
+
+		[Newtonsoft.Json.JsonIgnore]
+		public string JobTitle
+		{
+			get { return String.Format("JOB ID {0}", Id.Substring(0, 6).ToUpper()); }
 		}
 	}
 }

@@ -3,6 +3,7 @@ using mrjobs.Interface;
 using mrjobs.Services;
 using mrjobs.Pages;
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace mrjobs
 {
@@ -12,7 +13,7 @@ namespace mrjobs
 		{
 			InitializeComponent();
 			NavigationPage navPage = new NavigationPage(new MainPage());
-			navPage.BarBackgroundColor = Color.FromHex("5392DC");
+			navPage.BarBackgroundColor = (Color)Resources["AppNavBarColor"];
 			navPage.BarTextColor = Color.White;
 			MainPage = navPage;
 		}
@@ -28,6 +29,16 @@ namespace mrjobs
 #else
 			Container.RegisterType<IAppService, AzureAppService>(new ContainerControlledLifetimeManager());
 #endif
+
+			//Initialize the MobileService here...
+			Task.Run(async () =>
+			{
+				var appService = App.Container.Resolve<IAppService>();
+				if (appService != null)
+				{
+					await appService.Initialize();
+				}
+			});
 		}
 
 		protected override void OnSleep()

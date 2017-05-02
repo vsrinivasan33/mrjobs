@@ -32,5 +32,10 @@ namespace mrjobs.Pages
 				}
 			};
 		}
+
+		void ButtonClose_Clicked(object sender, EventArgs e)
+		{
+			PopupNavigation.PopAsync();
+		}
 	}
 }

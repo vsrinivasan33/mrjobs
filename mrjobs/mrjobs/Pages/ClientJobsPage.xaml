@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage x:Name="clientJobsPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:mrjobs.Controls;assembly=mrJobs" x:Class="mrjobs.Pages.ClientJobsPage" Title="CLIENT JOBS">
 	<ContentPage.ToolbarItems>
-		<ToolbarItem Name="buttonAdd" StyleId="buttonAdd" Order="Primary" Priority="1" Icon="add.png" Text="Add" Command="{Binding AddClientJobCommand}" />
+		<ToolbarItem Name="buttonAdd" StyleId="buttonAdd" Order="Primary" Priority="1" Icon="add.png" Text="Add" Clicked="ButtonAdd_Clicked" />
 	</ContentPage.ToolbarItems>
 	<ContentPage.Content>
 		<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0">
@@ -57,7 +57,7 @@
 					<DataTemplate>
 						<ViewCell BindingContextChanged="OnBindingContextChanged">
 							<ViewCell.ContextActions>
-								<MenuItem Clicked="DeleteJob_Clicked" Command="{Binding Path=BindingContext.DeleteJobCommand, Source={x:Reference clientJobsPage}}" CommandParameter="{Binding Id}" Text="Delete" IsDestructive="True"/>
+								<MenuItem Command="{Binding Path=BindingContext.DeleteJobCommand, Source={x:Reference clientJobsPage}}" CommandParameter="{Binding Id}" Text="Delete" IsDestructive="True"/>
 							</ViewCell.ContextActions>
 							<ViewCell.View>
 								<Grid Padding="20,15,20,0" ColumnSpacing="10" RowSpacing="3">
@@ -72,7 +72,7 @@
 										<ColumnDefinition Width="20" />
 									</Grid.ColumnDefinitions>
 									<Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="{Binding JobStatusImage}" />
-									<Label Grid.Row="0" Grid.Column="1" Style="{StaticResource Label_Header}" Text="{Binding Id, StringFormat='Job ID: {0}'}" />
+									<Label Grid.Row="0" Grid.Column="1" Style="{StaticResource Label_Header}" Text="{Binding JobTitle}" />
 									<Image Grid.Row="0" Grid.Column="2" Source="chevron.png" HorizontalOptions="End" VerticalOptions="Center" />
 									<Label Grid.Row="1" Grid.Column="1" Style="{StaticResource Label_Default}" Text="{Binding InvoicedDateString}" />
 									<BoxView Margin="-20,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />

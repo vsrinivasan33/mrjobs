@@ -90,7 +90,7 @@ namespace mrjobs.ViewModels
 				}
 			});
 
-			Task.Run(() => LoadClientJobsCommand.Execute(null));
+			//Task.Run(() => LoadClientJobsCommand.Execute(null));
 		}
 	}
 }

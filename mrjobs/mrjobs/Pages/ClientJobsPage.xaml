@@ -30,7 +30,7 @@
 				</StackLayout>
 				<Label Grid.Row="3" Grid.Column="0" Margin="20,0,0,0" Text="{Binding Client.AddressLine2}" Style="{StaticResource Label_Default}" />
 				<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-					<Image Source="email.png" />
+					<Image Source="email.png" WidthRequest="15" HeightRequest="15"/>
 					<Label Text="Email" Style="{StaticResource Label_Default}" />
 				</StackLayout>
 				<BoxView Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="-20,0" Style="{StaticResource BoxView_DividorGreen}" />

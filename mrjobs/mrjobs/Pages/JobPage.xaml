@@ -7,6 +7,7 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<converters:InverseBooleanConverter x:Key="inverseBooleanConverter" />
+			<!--<OnPlatform x:TypeArguments="x:Double" Android="40" iOS="30" WinPhone="30" x:Key="RowHeight" />-->
 		</ResourceDictionary>
 	</ContentPage.Resources>
 	<ContentPage.Content>
@@ -17,8 +18,8 @@
 						<RowDefinition Height="45" />
 						<RowDefinition Height="1" />
 						<RowDefinition Height="30" />
-						<RowDefinition Height="30" />
-						<RowDefinition Height="20" />
+						<RowDefinition Height="40" />
+						<RowDefinition Height="15" />
 						<RowDefinition Height="5" />
 						<RowDefinition Height="Auto" />
 						<RowDefinition Height="Auto" />
@@ -36,13 +37,13 @@
 						<Label Text="{Binding Job.Status}" Style="{StaticResource Label_Default}" />
 					</StackLayout>
 					<BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource BoxView_Dividor}" />
-					<Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Primary Contact" Style="{StaticResource Label_Header}" FontSize="15" VerticalOptions="Center" />
-					<StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Spacing="0" Padding="20,0" IsVisible="{Binding NewJob, Converter={StaticResource inverseBooleanConverter}}">
-						<Label Text="{Binding Job.ContactName}" Style="{StaticResource Label_Default}" />
+					<Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Primary Contact" Style="{StaticResource Label_Header}" FontSize="15" VerticalOptions="End" />
+					<StackLayout Grid.Row="3" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="End" Spacing="0" Padding="20,0" IsVisible="{Binding NewJob, Converter={StaticResource inverseBooleanConverter}}">
+						<Label Text="{Binding Job.ContactName}" Style="{StaticResource Label_Default}" VerticalOptions="End" />
 						<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="0,-1,0,0" />
 					</StackLayout>
-					<Entry Grid.Row="3" Grid.Column="0" Text="{Binding Job.ContactName}" IsVisible="{Binding NewJob}" HorizontalOptions="FillAndExpand" />
-					<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Padding="0">
+					<Entry Grid.Row="3" Grid.Column="0" Text="{Binding Job.ContactName}" IsVisible="{Binding NewJob}" HorizontalOptions="FillAndExpand" VerticalOptions="End" />
+					<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="End" Padding="0">
 						<Image Source="phone.png" WidthRequest="15" HeightRequest="15" Margin="0,0,10,0"/>
 						<Entry Text="{Binding Job.ContactNumber}" IsVisible="{Binding NewJob}" HorizontalOptions="FillAndExpand" Keyboard="Telephone"/>
 						<StackLayout HorizontalOptions="Start" Spacing="0" IsVisible="{Binding NewJob, Converter={StaticResource inverseBooleanConverter}}">
@@ -57,7 +58,7 @@
 							<Image Source="pin.png" HeightRequest="15" VerticalOptions="Center" />
 							<StackLayout Padding="0" Spacing="0" HorizontalOptions="FillAndExpand" IsVisible="{Binding NewJob, Converter={StaticResource inverseBooleanConverter}}">
 								<Label Style="{StaticResource Label_Default}" Text="{Binding Client.AddressLine1}" HeightRequest="20" />
-								<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="20,-1,0,0" />
+								<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="0,-1,0,0" />
 							</StackLayout>
 							<Entry Text="{Binding Client.AddressLine1}" IsVisible="{Binding NewJob}" HorizontalOptions="FillAndExpand" />
 						</StackLayout>
@@ -68,7 +69,7 @@
 						<Entry Text="{Binding Client.AddressLine2}" IsVisible="{Binding NewJob}" />
 						<BoxView Margin="-20,0" Style="{StaticResource BoxView_DividorBlue}" VerticalOptions="End" />
 					</StackLayout>
-					<StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10" Spacing="15">
+					<StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,0,0,10" Spacing="15">
 						<StackLayout Orientation="Horizontal" Padding="0" Spacing="0" HeightRequest="25">
 							<Label Style="{StaticResource Label_Header}" FontSize="15" Text="Job/Site Address" />
 							<Label Style="{StaticResource Label_Italic}" Text="Same as Billing" HorizontalOptions="End" HeightRequest="20" />
@@ -78,7 +79,7 @@
 							<Image Source="pin.png" HeightRequest="15" VerticalOptions="Center" />
 							<StackLayout Padding="0" Spacing="0" HorizontalOptions="FillAndExpand" IsVisible="{Binding NewJob, Converter={StaticResource inverseBooleanConverter}}">
 								<Label Style="{StaticResource Label_Default}" Text="{Binding Job.AddressLine1}" HeightRequest="20" />
-								<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="20,-1,0,0" />
+								<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="0,-1,0,0" />
 							</StackLayout>
 							<Entry Text="{Binding Job.AddressLine1}" IsVisible="{Binding NewJob}" HorizontalOptions="FillAndExpand" />
 						</StackLayout>
@@ -91,7 +92,7 @@
 					</StackLayout>
 					<Label Grid.Row="8" Grid.Column="0" Style="{StaticResource Label_Header}" FontSize="15" Text="Job Start Date" />
 					<StackLayout Grid.Row="8" Grid.Column="1" Padding="0" Spacing="0" HorizontalOptions="Start" VerticalOptions="Center">
-						<Button x:Name="buttonStartDate" TextColor="{StaticResource AppTextColor}" HeightRequest="20" Text="{Binding Job.StartDate, StringFormat='{0:dd-MMM-yyyy}'}" />
+						<Button x:Name="buttonStartDate" TextColor="{StaticResource AppTextColor}" HeightRequest="25" Text="{Binding Job.StartDate, StringFormat='{0:dd-MMM-yyyy}'}" />
 						<BoxView Style="{StaticResource BoxView_DividorGreen}" HeightRequest="0.5" Margin="0,-1,0,0" />
 					</StackLayout>
 					<DatePicker x:Name="datePickerStartDate" Grid.Row="8" Grid.Column="1" Date="{Binding Job.StartDate}" HeightRequest="20" VerticalOptions="Center" IsVisible="false" />

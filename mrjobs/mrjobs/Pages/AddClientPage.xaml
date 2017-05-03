@@ -6,15 +6,15 @@
 				<RowDefinition Height="80" />
 				<RowDefinition Height="1" />
 				<RowDefinition Height="Auto" />
-				<RowDefinition Height="30" />
-				<RowDefinition Height="30" />
+				<RowDefinition Height="40" />
+				<RowDefinition Height="40" />
 				<RowDefinition Height="70" />
 			</Grid.RowDefinitions>
-			<Frame Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" HasShadow="true" BackgroundColor="White" Margin="-20,-20" />
+			<BoxView Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" BackgroundColor="White" Margin="-20,-20" />
 			<Button Image="closepopup.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" VerticalOptions="Start" Margin="0,-25,-15,0" Clicked="ButtonClose_Clicked"/>
 			<StackLayout Grid.Row="0" Grid.Column="0" Spacing="10" VerticalOptions="Center">
 				<Label Grid.Row="0" Grid.Column="0" Text="Client Name" Style="{StaticResource Label_Header}" HeightRequest="25" />
-				<Entry Text="{Binding Client.Name}" Placeholder="Enter Client Name" HeightRequest="25" />
+				<Entry Text="{Binding Client.Name}" Placeholder="Enter Client Name" />
 			</StackLayout>
 			<BoxView Grid.Row="1" Grid.Column="0" Style="{StaticResource BoxView_Dividor}" />
 			<StackLayout Grid.Row="2" Grid.Column="0" Spacing="15" Padding="20,0,0,0">
@@ -22,21 +22,21 @@
 					<Image Source="pin.png" HeightRequest="15" VerticalOptions="Center" />
 					<Label Text="Billing Address" Style="{StaticResource Label_Header}" HeightRequest="25" />
 				</StackLayout>
-				<Entry Text="{Binding Client.AddressLine1}" Placeholder="Unit 1 Door No. 10" HeightRequest="25" HorizontalOptions="FillAndExpand" />
-				<Entry Text="{Binding Client.AddressLine2}" Placeholder="Downing Street" HeightRequest="25" HorizontalOptions="FillAndExpand" />
+				<Entry Text="{Binding Client.AddressLine1}" Placeholder="Unit 1 Door No. 10" HorizontalOptions="FillAndExpand" />
+				<Entry Text="{Binding Client.AddressLine2}" Placeholder="Downing Street" HorizontalOptions="FillAndExpand" />
 				<StackLayout Orientation="Horizontal" Spacing="5">
-					<Entry Text="{Binding Client.Suburb}" Placeholder="Melbourne" HeightRequest="25" HorizontalOptions="FillAndExpand" />
-					<Entry Text="{Binding Client.State}" Placeholder="VIC" HeightRequest="25" />
-					<Entry Text="{Binding Client.PostCode}" Placeholder="3000" HeightRequest="25" />
+					<Entry Text="{Binding Client.Suburb}" Placeholder="Melbourne" HorizontalOptions="FillAndExpand" />
+					<Entry Text="{Binding Client.State}" Placeholder="VIC" />
+					<Entry Text="{Binding Client.PostCode}" Placeholder="3000" />
 				</StackLayout>
 				<BoxView Style="{StaticResource BoxView_Dividor}" Margin="-20,0"/>
 			</StackLayout>
-			<StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Spacing="5">
-				<Image Source="phone.png" WidthRequest="15" HeightRequest="15" />
+			<StackLayout Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Spacing="5" Padding="0">
+				<Image Source="phone.png" WidthRequest="15" HeightRequest="15" VerticalOptions="End"/>
 				<Entry Text="{Binding Client.ContactNumber}" Placeholder="(03) 9414 2000" HorizontalOptions="FillAndExpand" Keyboard="Telephone" />
 			</StackLayout>
-			<StackLayout Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Spacing="5">
-				<Image Source="email.png" WidthRequest="15" HeightRequest="15" />
+			<StackLayout Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Spacing="5"  Padding="0" >
+				<Image Source="email.png" WidthRequest="15" HeightRequest="15" VerticalOptions="End"/>
 				<Entry Text="{Binding Client.Email}" Placeholder="hello@world.com" HorizontalOptions="FillAndExpand" Keyboard="Email"/>
 			</StackLayout>
 			<!--<BoxView Grid.Row="5" Grid.Column="0"  Margin="-20,0" Style="{StaticResource BoxView_DividorGreen}" />-->

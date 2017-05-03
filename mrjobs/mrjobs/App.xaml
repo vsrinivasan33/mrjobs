@@ -2,6 +2,8 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="mrjobs.App">
 	<Application.Resources>
 		<ResourceDictionary>
+			 <OnPlatform x:TypeArguments="x:Double" Android="45" iOS="25" WinPhone="25" x:Key="EntryHeight" />
+			 <OnPlatform x:TypeArguments="x:Double" Android="40" iOS="40" WinPhone="40" x:Key="ButtonHeight" />
 			<!-- Application resource dictionary -->
 			<Color x:Key="AppTextColor">#556675</Color>
 			<Color x:Key="AppHeaderColor">#315885</Color>
@@ -16,7 +18,7 @@
 				<Setter Property="FontSize" Value="17" />
 				<Setter Property="WidthRequest" Value="300" />
 				<Setter Property="BorderRadius" Value="20" />
-				<Setter Property="HeightRequest" Value="40" />
+				<Setter Property="HeightRequest" Value="{StaticResource ButtonHeight}" />
 				<Setter Property="BackgroundColor" Value="{StaticResource AppButtonColor}" />
 				<Setter Property="TextColor" Value="White" />
 				<Setter Property="FontAttributes" Value="Bold" />
@@ -60,6 +62,8 @@
 				<Setter Property="FontFamily" Value="HelveticaNeue-Medium" />
 				<Setter Property="TextColor" Value="{StaticResource AppTextColor}" />
 				<Setter Property="FontSize" Value="15" />
+				<Setter Property="HeightRequest" Value="{StaticResource EntryHeight}"/>
+				<Setter Property="VerticalOptions" Value="End" />
 			</Style>
 			<Style TargetType="Editor">
 				<Setter Property="FontFamily" Value="HelveticaNeue-Medium" />
@@ -70,6 +74,7 @@
 				<Setter Property="BorderWidth" Value="0" />
                 <Setter Property="BorderColor" Value="Transparent" />
 				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="HeightRequest" Value="{StaticResource ButtonHeight}"/>
 				<!--<Setter Property="Scale" Value="0.5" />-->
 			</Style>
 		</ResourceDictionary>

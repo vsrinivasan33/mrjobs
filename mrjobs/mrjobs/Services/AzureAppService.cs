@@ -10,6 +10,7 @@ using mrjobs.Models;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using System.Threading;
+using Plugin.Connectivity;
 
 namespace mrjobs.Services
 {
@@ -33,6 +34,9 @@ namespace mrjobs.Services
 				localStorage.DefineTable<Client>();
 				localStorage.DefineTable<Job>();
 
+				if (!CrossConnectivity.Current.IsConnected)
+                    return;
+				
 				await MobileService.SyncContext.InitializeAsync(localStorage);
 
 				_addressSyncTable = MobileService.GetSyncTable<ContactAddress>();
@@ -194,6 +198,9 @@ namespace mrjobs.Services
 		{
 			try
 			{
+				if (!CrossConnectivity.Current.IsConnected)
+                    return;
+				
 				if (_addressSyncTable != null)
 				{
 					await _addressSyncTable.PullAsync(null, string.Empty);
@@ -210,6 +217,9 @@ namespace mrjobs.Services
 		{
 			try
 			{
+				if (!CrossConnectivity.Current.IsConnected)
+                    return;
+				
 				if (_clientSyncTable != null)
 				{
 					await _clientSyncTable.PullAsync(null, string.Empty);
@@ -226,6 +236,9 @@ namespace mrjobs.Services
 		{
 			try
 			{
+				if (!CrossConnectivity.Current.IsConnected)
+                    return;
+				
 				if (_jobSyncTable != null)
 				{
 					await _jobSyncTable.PullAsync(null, string.Empty);

@@ -57,7 +57,7 @@ namespace mrjobs.Models
 		[Newtonsoft.Json.JsonIgnore]
 		public string JobTitle
 		{
-			get { return String.Format("JOB ID {0}", Id.Substring(0, 6).ToUpper()); }
+			get { return String.Format("JOB ID {0}", Id.Length >= 6 ? Id.Substring(0, 6).ToUpper() : Id.ToUpper()); }
 		}
 	}
 }

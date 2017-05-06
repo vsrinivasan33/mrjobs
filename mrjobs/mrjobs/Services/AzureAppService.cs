@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using Microsoft.WindowsAzure.MobileServices.SQLiteStore;
@@ -7,10 +8,9 @@ using Microsoft.WindowsAzure.MobileServices.Sync;
 using mrjobs.Config;
 using mrjobs.Interface;
 using mrjobs.Models;
-using System.Linq;
 using Newtonsoft.Json.Linq;
-using System.Threading;
 using Plugin.Connectivity;
+using Xamarin.Forms;
 
 namespace mrjobs.Services
 {
@@ -35,8 +35,8 @@ namespace mrjobs.Services
 				localStorage.DefineTable<Job>();
 
 				if (!CrossConnectivity.Current.IsConnected)
-                    return;
-				
+					return;
+
 				await MobileService.SyncContext.InitializeAsync(localStorage);
 
 				_addressSyncTable = MobileService.GetSyncTable<ContactAddress>();
@@ -47,6 +47,9 @@ namespace mrjobs.Services
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex);
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
+
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 		}
 
@@ -75,6 +78,9 @@ namespace mrjobs.Services
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex);
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
+
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 			return savedJob;
 		}
@@ -94,6 +100,9 @@ namespace mrjobs.Services
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex);
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
+
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 			return false;
 		}
@@ -143,6 +152,9 @@ namespace mrjobs.Services
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex);
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
+
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 			return new List<Client>();
 		}
@@ -172,6 +184,8 @@ namespace mrjobs.Services
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex);
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 			return null;
 		}
@@ -189,7 +203,9 @@ namespace mrjobs.Services
 			}
 			catch (Exception ex)
 			{
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
 
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 			return null;
 		}
@@ -199,8 +215,8 @@ namespace mrjobs.Services
 			try
 			{
 				if (!CrossConnectivity.Current.IsConnected)
-                    return;
-				
+					return;
+
 				if (_addressSyncTable != null)
 				{
 					await _addressSyncTable.PullAsync(null, string.Empty);
@@ -210,6 +226,9 @@ namespace mrjobs.Services
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex);
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
+
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 		}
 
@@ -218,8 +237,8 @@ namespace mrjobs.Services
 			try
 			{
 				if (!CrossConnectivity.Current.IsConnected)
-                    return;
-				
+					return;
+
 				if (_clientSyncTable != null)
 				{
 					await _clientSyncTable.PullAsync(null, string.Empty);
@@ -229,6 +248,9 @@ namespace mrjobs.Services
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex);
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
+
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 		}
 
@@ -237,8 +259,8 @@ namespace mrjobs.Services
 			try
 			{
 				if (!CrossConnectivity.Current.IsConnected)
-                    return;
-				
+					return;
+
 				if (_jobSyncTable != null)
 				{
 					await _jobSyncTable.PullAsync(null, string.Empty);
@@ -248,6 +270,9 @@ namespace mrjobs.Services
 			catch (Exception ex)
 			{
 				System.Diagnostics.Debug.WriteLine(ex);
+				string errorMsg = (ex.InnerException != null) ? ex.InnerException.Message : ex.Message;
+
+				Device.BeginInvokeOnMainThread(async () => await Application.Current.MainPage.DisplayAlert("Error Occured", errorMsg, "OK"));
 			}
 		}
 	}

@@ -1,14 +1,9 @@
-﻿using System;
-using MvvmHelpers;
-using Xamarin.Forms;
+﻿using MvvmHelpers;
 
 namespace mrjobs.ViewModels
 {
 	public class MainPageViewModel : BaseViewModel
 	{
-		public MainPageViewModel()
-		{
-			
-		}
+		
 	}
 }

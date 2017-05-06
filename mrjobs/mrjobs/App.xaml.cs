@@ -33,7 +33,7 @@ namespace mrjobs
 			//Initialize the MobileService here...
 			Task.Run(async () =>
 			{
-				var appService = App.Container.Resolve<IAppService>();
+				var appService = Container.Resolve<IAppService>();
 				if (appService != null)
 				{
 					await appService.Initialize();

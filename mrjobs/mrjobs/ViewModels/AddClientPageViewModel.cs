@@ -1,8 +1,7 @@
-﻿using System;
-using mrjobs.Models;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.Practices.Unity;
 using mrjobs.Interface;
+using mrjobs.Models;
 using MvvmHelpers;
 
 namespace mrjobs.ViewModels
